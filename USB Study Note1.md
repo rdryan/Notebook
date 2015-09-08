@@ -52,7 +52,7 @@ All packets begin with a SYNC field. 8 bits for full/low_speed, 32 bits for high
 
 ### EOP (End Of Packet) ###
 
-> ** EOP Pattern**   
+> **EOP Pattern**   
 >> 2 SE0 for **full/low-speed**  
 
 >> For **high-speed** packets other than SOF's, the transmitted EOP delimiter is required to be an NRZ byte of 01111111 without bit stuffing.    
