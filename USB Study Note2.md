@@ -18,7 +18,7 @@
 * full-speed (part of high-speed capable transceiver) driver impedance Zhsdrv: 40.5 Ohm ~ 49.5 Ohm
 
 
-### Low-speed (12 Mb/s) Driver Characteristics ###
+### Low-speed (1.5 Mb/s) Driver Characteristics ###
 
 * a single-ended capacitance of no less than 200 pF and no more than 450 pF on the D+/D- lines.
 
