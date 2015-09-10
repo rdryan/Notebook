@@ -81,6 +81,38 @@ A connect condition will be detected when the hub detects that on of the data li
 
 
 
+### Byte/Bit Ordering ###
+Bits are sent LSB first, MSB last.   
+Multiple byte fieldsare in little-endian order. LSB to MSB.
+
+
+### CRCs ###
+
+**Token CRCS**
+
+The five-bit CRC:
+
+	G(X)=X^5+X^2+1
+
+The polynomial is 00101B. five-bit residual is 01100B.
+
+
+**Data CRCS**
+
+The 16-bit CRC:
+
+	G(X)=X^16+X^15+X^2+1
+
+The polynomial is 10000000000001101B. 16-bit  residual is 1000000000001101B.
+
+
+2015-09-10
+
+
+
+	
+
+
 
 
 
