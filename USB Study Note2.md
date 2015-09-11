@@ -23,6 +23,27 @@
 * a single-ended capacitance of no less than 200 pF and no more than 450 pF on the D+/D- lines.
 
 
+### Reset ###
+
+* SE0 more then 10 ms.
+
+### Suspend ###
+
+* Idle state on lines for more then 3.0 ms.
+
+### Resume ###
+
+* Device is resumed when any non-idle signaling is received.
+
+
+### UTMI vs. UTMI+ ###
+
+* The UTMI spec is used only for USB2.0 peripherals, it can not be used to develop USB2.0 host or OTG peripherals.
+* The UTMI+ spec is to extend the UTMI spec to standardize the interface for USB2.0 hosts and USB2.0 OTG peripherals.
+
+2015-09-11
+
+
 
 
 
