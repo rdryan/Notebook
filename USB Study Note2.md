@@ -41,7 +41,36 @@
 * The UTMI spec is used only for USB2.0 peripherals, it can not be used to develop USB2.0 host or OTG peripherals.
 * The UTMI+ spec is to extend the UTMI spec to standardize the interface for USB2.0 hosts and USB2.0 OTG peripherals.
 
+
 2015-09-11
+
+### Data Encoding/Decoding
+
+* The USB employs NRZI data encoding when tranmitting packets.    
+(**NRZI** stands for _Non-Return to Zero, Inverted_)    
+
+* Zero's in the NRZI data stream are represented by transitions while 1s are represented by the absence of a transition.
+
+* NRZI **encoder** and **decoder** design can refer to [this artical](http://www.oguchi-rd.com/technology/nrzi.pdf).
+
+* Transitions in the data stream permit the decoder to maintain synchronization with the incoming data, thereby eliminating 
+the need for a separate clock signals.
+
+	**Note** however that a long string of consecutive 1s results in no transitions, causing the receiver to eventually lose synchronization. The solution is to employ **_bit stuffing_**.
+
+
+### Bit Stuffing
+
+* Bit stuffing forces transitions into the NRZI data stream in the event that six consecutive 1s are transmitted.    
+* The transmitter of NRZI data is responsible for inserting a 0 (stuffed bit) into the NRZI stream.   
+* The receiver must be designed to expect an automatic transmition following six consecutive 1s and discard the 0 bit that immediately follows the sixth consecutive 1.
+* Bit stuffing is enabled beginning with the Sync Pattern.
+* The data "one" that ends the Sync Pattern is counted as the first one in a sequence.
+* Bit stuffing by the transmitter is always enforced, except during high-speed EOP.
+
+
+
+
 
 
 
