@@ -36,12 +36,6 @@
 * Device is resumed when any non-idle signaling is received.
 
 
-### UTMI vs. UTMI+ ###
-
-* The UTMI spec is used only for USB2.0 peripherals, it can not be used to develop USB2.0 host or OTG peripherals.
-* The UTMI+ spec is to extend the UTMI spec to standardize the interface for USB2.0 hosts and USB2.0 OTG peripherals.
-
-
 2015-09-11
 
 ### Data Encoding/Decoding
@@ -67,11 +61,6 @@ the need for a separate clock signals.
 * Bit stuffing is enabled beginning with the Sync Pattern.
 * The data "one" that ends the Sync Pattern is counted as the first one in a sequence.
 * Bit stuffing by the transmitter is always enforced, except during high-speed EOP.
-
-
-
-
-
 
 
 
