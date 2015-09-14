@@ -52,6 +52,7 @@ There are 4 transfer types have been defined by the USB spec:
 * Isochronous transfer
 * Control transfer
 
+
 ### Max Package Size (in Bytes)
 
 |Type    		| Low Speed | Full Speed 	| High Speed |        
@@ -62,9 +63,25 @@ There are 4 transfer types have been defined by the USB spec:
 |Bulk			|	NA		|	64			|	512      |    
 
 
+### Communication Pipes
 
+USB spec classifies a communications pipe as either a stream or a message pipe:
 
+* Streaming pipes    
+	Iso, Interrupt and bulk endpoint. USB imposes no particular format for data. Data delivered to or from these endpoint may have specific structures or formats (class or vendor-specific).
 
+* Message pipes    
+	Control endpoint. has specific strcture defined by USB. Communication requires a specific structure and sequence, and the data patterns sent to the endpoint define requests or commands that are issued to a device. These requests specify that the device must take some action.
+
+**_Note_**   
+
+The communication targeting endpoint zero (the default control endpoint) that every device must implement. it is **bidirectional** to allow messages to be passed in both directions.
+
+The other transfer pipes are always **unidirectional**. So two endpoints needed, one for reads and one for writes.
+
+------
+
+####
 
 
  
