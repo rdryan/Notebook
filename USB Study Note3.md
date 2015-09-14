@@ -9,25 +9,25 @@
 
 ### UTMI Serial Interface Signals
 
-* FSDATAEXT   
+* **FSDATAEXT**   
 	USB 1.1 Transmit Data. This controller signal sets the USB to either a J or K state. This signal is valid only if FSXCVROWNER is set to 1'b1, TXENABLEN is set to 1'b0, and FSSE0EXT is set to 1'b0.
 
-* FSSE0EXT    
+* **FSSE0EXT**    
 	USB 1.0 SE0 Generation. This controller signal sets the USB to an SE0 state. This signal is valid only if FSXCVROWNER is set to 1'b1 and TXENABLEN is set to 1'b0.
 
-* TXENABLEN    
+* **TXENABLEN**    
 	USB 1.0 Data Enable. This controller signal enables the FSDATAEXT and FSSE0EXT inputs. TXENABLEN is valid only when the FSXCVROWNER signal is set to 1'b1.
 
-* FSXCVROWNER  
+* **FSXCVROWNER**  
 	UTMI+/Serial Interface Select. This controller signal enables the UTMI+ or serial interface.
 
-* FSLSRCV   
+* **FSLSRCV**   
 	Differential Data Receive Indicator. This controller signal indicates the state of differential data on the USB during normal operation.
 
-* FSVPLUS   
+* **FSVPLUS**   
 	Signle-Ended D+ Indicator. This controller signal indicates the state of the D+ line during normal operation.
 
-* FSVMINUS   
+* **FSVMINUS**   
 	Signle-Ended D- Indicator. This controller signal indicates the state of the D- line during normal operation.
 
 
