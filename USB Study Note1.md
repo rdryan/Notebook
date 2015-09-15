@@ -108,6 +108,21 @@ The polynomial is 10000000000001101B. 16-bit  residual is 1000000000001101B.
 
 2015-09-10
 
+-----
+
+### USB Connector Termination Data ###
+
+| Contact Number | Signal Name | Typical Wriring Color|   
+|----------------|-------------|----------------------|   
+|       1        |  VBUS       |    Red               |   
+|       2        |  D-         |    White             |   
+|       3        |  D+         |    Green             |   
+|       4        |  GND        |    Black             |   
+|     Shell      |  Shield     |    Drain Wire        |   
+
+-----
+
+
 
 
 	

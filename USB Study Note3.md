@@ -81,7 +81,21 @@ The other transfer pipes are always **unidirectional**. So two endpoints needed,
 
 ------
 
-####
+### Special Considerations for Isochronous Transfers
+
+Support for isochronous data movement between the host and a device is one of the system capabilities supported by the USB. Delivering isochronous data reliably over the USB requires careful attention to detail.
+
+* USB Clock Model
+* USB (micro)frame Clock-to-function Clock Synchronization Option
+* SOF Tracking
+* Data Prebuffering
+* Error Handling
+* Buffering for Rate Matching
+
+(_Above topic can be found in usb2.0 spec page65 ~ page83._)
+
+
+
 
 
  
