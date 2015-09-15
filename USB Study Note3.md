@@ -95,7 +95,28 @@ Support for isochronous data movement between the host and a device is one of th
 (_Above topic can be found in usb2.0 spec page65 ~ page83._)
 
 
+------
+
+### NAK Limiting via Ping Flow Control
+
+PING and NYET are only used in high-speed.
 
 
+### Bulk Transactions
+
+* When host **receives** bulk data, it issues an **IN token**. The function endpoint responds by returning either a data packet or, should it be unable to return data, a _NAK_ or _STALL_ handshake.
+	>* _NAK_ indicates indicates that the function is temporarily unable to return data
+	>* _STALL_ indicates that the endpoint is permanently halted and requires USB System Software intervention.
+	>* If host receives a valid data, it responds with an _ACK_ handshake.
+	>* If host _detects an error_ while receiving data, it returns **no handshake** packet to the function.
+
+* When host **transmits** bulk data, it issues an **OUT token packet** followed by a data packet (or PING token in high-speed mode). If the data is received without error by the function, it will return _ACK_ or _NAK_ or _STALL_ or no handshake is returned.
+	>* _ACK_ indicates that data packet was received without errors, and informs host that it may send next packet in the sequence.
+	>* _NAK_ indicates that data packet was received without erros **but** that host should **resend** the data because the function was in a temporary condition preventing it from accepting that data (e.g., buffer full).
+	>* If the endpoint was halted, _STALL_ is returned to indicate that the host should not retry the transmission because there is an error condition on the function.
+	>* If the data packet was received _with a CRC or bit stuff error_, **no handshake** is returned.
+	
+
+###
 
  
