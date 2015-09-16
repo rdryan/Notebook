@@ -99,13 +99,13 @@ Support for isochronous data movement between the host and a device is one of th
 
 ### NAK Limiting *via* Ping Flow Control
 
-*PING* and *NYET* are only used in high-speed.
+PING and NYET are only used in high-speed.
 
 Following an **OUT transaction** that has been delivered to a bulk or control endpoint. If the endpoint return a NAK handshake for inability processing the data it received. Much of the bandwidth is wasted.
 
 The *PING* protocol solves this problem by providing a way for the host to ask and for the device to answer.
 
-(*All bulk and control endpoints at high-speed must support the PING protocol. However, the setup stage of a control transfer **must** always return ACK*)
+(All bulk and control endpoints at high-speed must support the PING protocol. However, the setup stage of a control transfer **must** always return ACK)
 
 The endpoint either responds to the *PING* with a *NAK* or an *ACK* handshake.
 
@@ -113,6 +113,7 @@ The endpoint either responds to the *PING* with a *NAK* or an *ACK* handshake.
 
 * An *ACK* handshake indicates the endpoint has space for a *wMaxPacketSize* data payload. The host controller must generate an *OUT* transaction with a DATA phase as the next transaction to the endpoint.
 	>* If the endpoint responds to the OUT/DATA transaction with an **ACK** handshake, this means the endpoint accepted the data successfully and has room for **another** *wMaxPacketSize* data payload.
+	
 	>* If the endpoint responds to the OUT/DATA transaction with a **NYET** handshake, this means that the endpoint accepted the data **but** does not have room for another *wMaxPacketSize* data payload.
  
 
@@ -120,17 +121,37 @@ The endpoint either responds to the *PING* with a *NAK* or an *ACK* handshake.
 
 * When host **receives** bulk data, it issues an **IN token**. The function endpoint responds by returning either a data packet or, should it be unable to return data, a _NAK_ or _STALL_ handshake.
 	>* _NAK_ indicates indicates that the function is temporarily unable to return data
+	
 	>* _STALL_ indicates that the endpoint is permanently halted and requires USB System Software intervention.
+	
 	>* If host receives a valid data, it responds with an _ACK_ handshake.
+	
 	>* If host _detects an error_ while receiving data, it returns **no handshake** packet to the function.
 
 * When host **transmits** bulk data, it issues an **OUT token packet** followed by a data packet (or PING token in high-speed mode). If the data is received without error by the function, it will return _ACK_ or _NAK_ or _STALL_ or no handshake is returned.
 	>* _ACK_ indicates that data packet was received without errors, and informs host that it may send next packet in the sequence.
+
 	>* _NAK_ indicates that data packet was received without erros **but** that host should **resend** the data because the function was in a temporary condition preventing it from accepting that data (e.g., buffer full).
+
 	>* If the endpoint was halted, _STALL_ is returned to indicate that the host should not retry the transmission because there is an error condition on the function.
+
 	>* If the data packet was received _with a CRC or bit stuff error_, **no handshake** is returned.
 	
 
-###
+### Control Transfers
+
+Control transfers have **two** or **three** transaction stages:  
+  
+* Setup and Status.
+* Setup, Data and Status.
+
+SETUP transactions are similar in format to an OUT but use a SETUP rather than an OUT PID. A SETUP always uses a **_DATA0_** PID for the data field of the SETUP transaction.
+
+* SETUP (Token) + DATA0 + **ACK**	        <--(transaction succeed)
+* SETUP (Token) + DATA0	with **no handshake**	<--(transaction corrupted)
+
+The function receiving a SETUP must accept the SETUP data and respond with ACK. If the data is corrupted, discard the data and return **no handshake**.
+
+
 
  
