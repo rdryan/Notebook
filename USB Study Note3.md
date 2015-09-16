@@ -97,10 +97,24 @@ Support for isochronous data movement between the host and a device is one of th
 
 ------
 
-### NAK Limiting via Ping Flow Control
+### NAK Limiting *via* Ping Flow Control
 
-PING and NYET are only used in high-speed.
+*PING* and *NYET* are only used in high-speed.
 
+Following an **OUT transaction** that has been delivered to a bulk or control endpoint. If the endpoint return a NAK handshake for inability processing the data it received. Much of the bandwidth is wasted.
+
+The *PING* protocol solves this problem by providing a way for the host to ask and for the device to answer.
+
+(*All bulk and control endpoints at high-speed must support the PING protocol. However, the setup stage of a control transfer **must** always return ACK*)
+
+The endpoint either responds to the *PING* with a *NAK* or an *ACK* handshake.
+
+* A *NAK* handshake indicates that the endpoint does not have space for a *wMaxPacketSize* data payload. The host controller will retry the *PING* at some future time to query the endpoint again.
+
+* An *ACK* handshake indicates the endpoint has space for a *wMaxPacketSize* data payload. The host controller must generate an *OUT* transaction with a DATA phase as the next transaction to the endpoint.
+	>* If the endpoint responds to the OUT/DATA transaction with an **ACK** handshake, this means the endpoint accepted the data successfully and has room for **another** *wMaxPacketSize* data payload.
+	>* If the endpoint responds to the OUT/DATA transaction with a **NYET** handshake, this means that the endpoint accepted the data **but** does not have room for another *wMaxPacketSize* data payload.
+ 
 
 ### Bulk Transactions
 
