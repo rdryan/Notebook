@@ -145,16 +145,16 @@ Control transfers have **two** or **three** transaction stages:
 * Setup and Status.
 * Setup, Data and Status.
 
-_SETUP transactions_ are similar in format to an OUT but use a SETUP rather than an OUT PID. A SETUP always uses a **_DATA0_** PID for the data field of the SETUP transaction.
+_SETUP transactions_ are similar in format to an OUT except the PID. A SETUP always uses a **_DATA0_** PID for the _data field_ of the SETUP transaction.
 
 * SETUP (Token) + DATA0 + **ACK**    (_transaction succeed_)
 * SETUP (Token) + DATA0	with **no handshake**    (_transaction corrupted_)
 
-    (The function receiving a SETUP must accept the SETUP data and respond with ACK. If the data is corrupted, discard the data and return **no handshake**.)
+(_The function receiving a SETUP must accept the SETUP data and respond with ACK. If the data is corrupted, discard the data and return **no handshake**._)
 
 _The Data stage_ consists one or more IN or OUT transactions, follows the rules as bulk transfers. All the transactions must in the **same** direction. All the data carry the maximum packet size, except the last one.
 
-_The Status stage_ transactions follow the same protocol sequence as but transactions. It also include PING protocol (high-speed). A Status stage is delineated by a change in direction of data flow from the previous stage and always use a **DATA1 PID**.
+_The Status stage_ transactions follow the same protocol sequence as **bulk transactions**. It also include PING protocol (high-speed). A Status stage is delineated by a change in direction of data flow from the previous stage and always use a **DATA1 PID**.
 
 **Status Stage Responses**
 
@@ -166,5 +166,5 @@ _The Status stage_ transactions follow the same protocol sequence as but transac
 | Function is busy     | NAK handshake            | NAK handshake                |    
 
 
-### Interrupt transfers
+### Interrupt Transfers
 
