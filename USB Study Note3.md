@@ -156,11 +156,11 @@ _The Data stage_ consists one or more IN or OUT transactions, follows the rules 
 
 _The Status stage_ transactions follow the same protocol sequence as but transactions. It also include PING protocol (high-speed). A Status stage is delineated by a change in direction of data flow from the previous stage and always use a **DATA1 PID**.
 
-* Status Stage Responses
+**Status Stage Responses**
 
 | Status Response      | Control Write Transfer   | Control Read Transfer        |    
-|                      | (sent during data phase) | (sent during hanshake phase) |    
 |----------------------|--------------------------|------------------------------|    
+|                      | (sent during data phase) | (sent during hanshake phase) |      
 | Function completes   | Zero-length data packet  | ACK handshake                |    
 | Function has an error| STALL handshake          | STALL handshake              |    
 | Function is busy     | NAK handshake            | NAK handshake                |    
