@@ -1,7 +1,7 @@
 # Notebook #
-## 1. Chronometer Class##
-+ Chronometer.start()
-+ Chronometer.stop()
-+ Chronometer.setFormat("Test %s")  
-Format string: if specified, the Chronometer will display this string, with the first "%s" replaced by the current timer value in "MM:SS" or "H:MM:SS" form. If no format string is specified, the Chronometer will simply display "MM:SS" or "H:MM:SS".
-+ Chronometer.setBase(SystemClock.elapsedRealtime())
+This notebook contains some study notes that are used for memories.   
+>1. [Android](https://github.com/rdryan/Notebook/blob/master/Android%20Nots.md)   
+>2. [USB](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note1.md)   
+>3. others    
+
+
