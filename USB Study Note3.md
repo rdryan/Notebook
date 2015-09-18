@@ -140,21 +140,21 @@ The endpoint either responds to the *PING* with a *NAK* or an *ACK* handshake.
 
 ### Control Transfers
 
-Control transfers have **two** or **three** transaction stages:  
+Control transfers have **Two** or **Three** transaction stages:  
   
 * Setup and Status.
 * Setup, Data and Status.
 
-_SETUP transactions_ are similar in format to an OUT except the PID. A SETUP always uses a **_DATA0_** PID for the _data field_ of the SETUP transaction.
+**SETUP transactions** are similar in format to an OUT except the PID. A SETUP always uses a **_DATA0_** PID for the _data field_ of the SETUP transaction.
 
 * SETUP (Token) + DATA0 + **ACK**    (_transaction succeed_)
 * SETUP (Token) + DATA0	with **no handshake**    (_transaction corrupted_)
 
 (_The function receiving a SETUP must accept the SETUP data and respond with ACK. If the data is corrupted, discard the data and return **no handshake**._)
 
-_The Data stage_ consists one or more IN or OUT transactions, follows the rules as bulk transfers. All the transactions must in the **same** direction. All the data carry the maximum packet size, except the last one.
+The _**Data stage**_ consists one or more IN or OUT transactions, follows the rules as bulk transfers. All the transactions must in the **same** direction. All the data carry the maximum packet size, except the last one.
 
-_The Status stage_ transactions follow the same protocol sequence as **bulk transactions**. It also include PING protocol (high-speed). A Status stage is delineated by a change in direction of data flow from the previous stage and always use a **DATA1 PID**.
+The _**Status stage**_ transactions follow the same protocol sequence as **bulk transactions**. It also include PING protocol (high-speed). A Status stage is delineated by a change in direction of data flow from the previous stage and always use a **DATA1 PID**.
 
 **Status Stage Responses**
 
@@ -166,5 +166,28 @@ _The Status stage_ transactions follow the same protocol sequence as **bulk tran
 | Function is busy     | NAK handshake            | NAK handshake                |    
 
 
-### Interrupt Transfers
+### Interrupt Transactions
+
+Interrupt transactions consist of **IN** or **OUT** transfers.
+
+* when receipt of an IN token, a function may return data, NAK, or STALL. The host, in response to receipt of data packet, issues ACK handshake or returns no handshake.
+* When receipt of an OUT token and DATA, a function may return ACK, NAK, STALL or no handshake return.
+* Initialized to use **DATA0** PID, behaves the same as Bulk transactions.
+
+### Isochronous Tranactions
+Isochronous transactions have a **token** and **data** phase, but no handshake phase. It do not support a handshake phase or retry capbility.
+
+The host issuse either an **IN** or an **OUT** token followed by the **data** phase.
+
+* A full-speed device only send **DATA0** PIDs in data packet.
+* A high-speed device with at most 1 transaction per microframe must only send **DATA0** PIDs.
+* A high-speed device with high-bandwith endpoints must be able to accept and/or send **DATA0**, **DATA1**, **DATA2**, or **MDATA** PIDs in data packets.
+* Full-speed isochronous transactions do not support toggle sequencing.
+* High-speed isochronous transactions with a single transaction per microframe do not support toggle sequencing.
+* High bandwidth, high-speed isochronous transctions support data PID sequencing.
+
+2015-09-18
+
+
+------
 
