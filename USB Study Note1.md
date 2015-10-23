@@ -67,7 +67,7 @@ All packets begin with a SYNC field. 8 bits for full/low_speed, 32 bits for high
 
 **Disconnect**    
    	
-* low-/full-speed, the pull-down resistors present at host or hub will cause both D+ and D- to be pulled low (like an SE0). A disconnect condition is indicated if the host or hub is not driving the data lines and an SE0 persists on a downstream facing port for more then TDDIS.
+* low-/full-speed, the pull-down resistors present at host or hub will cause both D+ and D- to be pulled low (like an SE0). A disconnect condition is indicated if the host or hub is not driving the data lines and an SE0 persists on a downstream facing port for more than TDDIS.
 
 * high-speed, by sensing the doubling in differential signal amplitude across the D+ and D- lines that can occur when the device terminations are removed. 
 
@@ -122,6 +122,7 @@ The polynomial is 10000000000001101B. 16-bit  residual is 1000000000001101B.
 
 -----
 
+[Go to USB Study Note2](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note2.md)   
 
 
 
