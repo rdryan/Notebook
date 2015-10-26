@@ -62,10 +62,10 @@ the need for a separate clock signals.
 * The data "one" that ends the Sync Pattern is counted as the first one in a sequence.
 * Bit stuffing by the transmitter is always enforced, except during high-speed EOP.
 
+-----
 
-
-
-
+[Go to USB Study Note1](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note1.md)   
+[Go to USB Study Note3](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note3.md)   
 
 
 

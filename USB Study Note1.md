@@ -123,7 +123,7 @@ The polynomial is 10000000000001101B. 16-bit  residual is 1000000000001101B.
 -----
 
 [Go to USB Study Note2](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note2.md)   
-
+[Go to USB Study Note3](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note3.md)   
 
 
 	

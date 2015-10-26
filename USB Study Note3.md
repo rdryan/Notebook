@@ -174,7 +174,7 @@ Interrupt transactions consist of **IN** or **OUT** transfers.
 * When receipt of an OUT token and DATA, a function may return ACK, NAK, STALL or no handshake return.
 * Initialized to use **DATA0** PID, behaves the same as Bulk transactions.
 
-### Isochronous Tranactions
+### Isochronous Transactions
 Isochronous transactions have a **token** and **data** phase, but no handshake phase. It do not support a handshake phase or retry capbility.
 
 The host issuse either an **IN** or an **OUT** token followed by the **data** phase.
@@ -191,3 +191,5 @@ The host issuse either an **IN** or an **OUT** token followed by the **data** ph
 
 ------
 
+[Go to USB Study Note1](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note1.md)   
+[Go to USB Study Note2](https://github.com/rdryan/Notebook/blob/master/USB%20Study%20Note2.md)   
