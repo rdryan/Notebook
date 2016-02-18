@@ -15,7 +15,10 @@ LTSSM consists of **12** different link states that can be characterized based o
 
 **Polling**: is a link state that is defined for the two link partners to have their Enhanced SuperSpeed transmitters and receivers trained, synchronized, and ready for packet transfer.  
 
-**Recovery**: 
+**Recovery**: is a link state defined for retraining the link when the two link partners exit from a low power link state, or when a link partner has detected that the link is not operating in U0 properly and the link needs to be retrained, or when a link partner decides to changed the mode of link operation.
+
+**Hot Reset**: is a state defined to allow a downstream port to reset its upstream port.
+
  
 
 
