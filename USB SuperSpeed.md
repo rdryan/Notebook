@@ -107,6 +107,47 @@ ITPs are used to deliver timestamps from the host to all active devices. ITPs ca
 * An ITP may be transmitted in between packets in a burst. If a device receives an ITP with the delayed flag (DL) set in the link control word, the timestamp value may be significantly inaccurate and may be ignored by the device.
 
 
+## Transaction Packet Usages ##
+
+TPs are used to report the status of data transactions and can return values indicating successful reception of data packets, command acceptance or rejection, flow control, and halt conditions.
+
+
+## Link Training ##
+
+Link Traing Sequence: (normal)
+
+	Rx.Detect -> Polling -> U0 Link State
+
+**Rx.Detect:**  
+
+* Rx.Detect.Reset  
+* Rx.Detect.Active  
+* Rx.Detect.Quiet  
+
+
+**Polling:**  
+
+* Polling.LFPS  
+* Polling.RxEQ  
+* Polling.Active  
+* Polling.Configuration   
+* Polling.Idle
+
+
+**U0 Link State:**
+
+ Link CMDS:
+
+ * Tx HDR Seq#   
+ * Rx HDR Credit (Advertisements)   
+
+ LMPS:
+
+* Port Capability   
+* Port Configuration   
+* Port config Response   
+
+
 
 
 -----
