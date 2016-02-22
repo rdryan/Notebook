@@ -120,17 +120,17 @@ Link Traing Sequence: (normal)
 
 **Rx.Detect:**  
 
-* Rx.Detect.Reset  
-* Rx.Detect.Active  
-* Rx.Detect.Quiet  
+* Rx.Detect.Reset
+* Rx.Detect.Active
+* Rx.Detect.Quiet
 
 
 **Polling:**  
 
-* Polling.LFPS  
-* Polling.RxEQ  
-* Polling.Active  
-* Polling.Configuration   
+* Polling.LFPS
+* Polling.RxEQ
+* Polling.Active
+* Polling.Configuration
 * Polling.Idle
 
 
@@ -138,14 +138,14 @@ Link Traing Sequence: (normal)
 
  Link CMDS:
 
- * Tx HDR Seq#   
- * Rx HDR Credit (Advertisements)   
+ * Tx HDR Seq#
+ * Rx HDR Credit (Advertisements)
 
  LMPS:
 
-* Port Capability   
-* Port Configuration   
-* Port config Response   
+* Port Capability
+* Port Configuration
+* Port config Response
 
 
 
