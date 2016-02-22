@@ -86,6 +86,27 @@ Transaction Packets (TPs) traverse the direct path between the host and a device
 	1001b - 1111b Reserved
 
 
+## Data Packet (DP) ##
+
+This packet can be sent by either the host or a device. All data packets are comprised of a Data Packet Header and a Data Packet Payload.
+
+
+## Isochronous Timestamp Packet (ITP) ##
+
+The Isochronous Timestamp Packet (ITP) shall be multicast on all links in U0 that have completed Port Configuration.
+      
+ITPs are used to deliver timestamps from the host to all active devices. ITPs carry no addressing or routing information and are multicast by hubs to all of their downstream ports with links in the U0 state and that have completed Port Configureation. A device shall not respond to an ITP. ITPs are used to provide host timing information to devices for synchronization. 
+
+**Note that:**
+ 
+* Any device or hub may receive an ITP. 
+* The host shall transmit an ITP on a root port link if and only if the link is already in U0. Only the host shall initiate an ITP transmission. 
+* The host shall not bring a root port link to U0 for the purpose of transmitting an ITP. 
+* The host shall transmitt an ITP in every bus interval within tTimestramp Window from a but interval boundary if the root  port link is in U0. 
+* The host shall begin transmitting ITPs within tIsochronous TimestampStart from when the host root port's link enters U0 from the polling state. 
+* An ITP may be transmitted in between packets in a burst. If a device receives an ITP with the delayed flag (DL) set in the link control word, the timestamp value may be significantly inaccurate and may be ignored by the device.
+
+
 
 
 -----
